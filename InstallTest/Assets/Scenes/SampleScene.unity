@@ -551,7 +551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebddb10bd380c6d4691561742c1ab812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  moveSpeed: 15
+  moveSpeed: 25
   drag: 2.1
   velocity: {x: 0, y: 0}
 --- !u!114 &1741423445
