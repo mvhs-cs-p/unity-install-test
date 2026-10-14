@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         Vector2 input = getPlayerInput();
-        MovePlayer(input);
+        bool applyBost = getApplyBoost();
+        MovePlayer(input, applyBost);
     }
 
     private Vector2 getPlayerInput()
@@ -39,9 +40,16 @@ public class Player : MonoBehaviour
         return moveInput.normalized;
     }
 
-    private void MovePlayer(Vector2 input)
+    private bool getApplyBoost()
     {
-        velocity += input * moveSpeed * Time.deltaTime;
+        return Keyboard.current.leftShiftKey.isPressed;
+    }
+
+    private void MovePlayer(Vector2 input, bool boost)
+    {
+        float speed = boost ? moveSpeed * 3f : moveSpeed;
+
+        velocity += input * speed * Time.deltaTime;
         velocity -= velocity * drag * Time.deltaTime;
 
         Vector2 moveAmount = velocity * Time.deltaTime;
